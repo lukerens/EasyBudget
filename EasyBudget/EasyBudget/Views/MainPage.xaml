@@ -4,8 +4,44 @@
              x:Class="EasyBudget.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+    <StackLayout>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="10" Grid.Row="0" Grid.Column="0" Text="Upload Statement" />
+                <Button Margin="10" Grid.Row="0" Grid.Column="1" Text="Approve Items" />
+            </Grid>
+        </StackLayout>
+
+        <Frame BorderColor="Black" Margin="5,0">
+            <StackLayout>
+                <Label Text="Total this month" FontSize="Large" HorizontalOptions="Center"/>
+                <Label Text="$0.00" FontSize="Medium" HorizontalOptions="Center" Margin="0,25,0,25"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame BorderColor="Black" Margin="5">
+            <ListView ItemsSource="{Binding ListOfExpenses}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="35">
+                            <StackLayout Margin="1">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" />
+                                <Label Text="{Binding Price}" FontAttributes="Bold" />
+                            </StackLayout>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+
     </StackLayout>
 
 </ContentPage>
